@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>漫剧工坊 · 完整产品案例</title>
+  <link rel="icon" href="assets/icon-256.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: var(--bg); }
+    .case-shell { width: min(1040px, calc(100% - 40px)); margin: 0 auto; padding: 60px 0 100px; }
+    .case-cover { min-height: 68vh; display: flex; flex-direction: column; justify-content: flex-end; padding: 60px; background: linear-gradient(145deg, #182025, #0e1315 65%); border: 1px solid var(--line); position: relative; overflow: hidden; }
+    .case-cover::after { content: ""; position: absolute; width: 460px; height: 460px; border-radius: 50%; right: -180px; top: -180px; border: 1px solid rgba(210,154,93,.25); }
+    .case-cover h1 { font-size: clamp(58px,10vw,120px); margin: 26px 0; }
+    .case-cover p { color: var(--muted); max-width: 700px; font-size: 18px; }
+    .case-cover small { color: #748186; margin-top: 50px; }
+    .case-section { padding: 100px 0; border-bottom: 1px solid var(--line); }
+    .case-section h2 { font-size: clamp(34px,5vw,58px); letter-spacing: -.05em; margin-bottom: 28px; }
+    .case-section p { color: var(--muted); font-size: 15px; max-width: 760px; }
+    .case-section img { border: 1px solid var(--line); padding: 8px; background: #090d0f; }
+    .case-two { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+    .case-list { padding-left: 18px; color: var(--muted); }
+    .case-list li { margin: 12px 0; }
+    .case-list li::marker { color: var(--accent); }
+    .case-quote { margin: 40px 0; padding: 34px; background: var(--paper); color: #253034; font-size: 24px; line-height: 1.55; }
+    .case-back { position: fixed; right: 24px; top: 22px; z-index: 5; padding: 8px 14px; background: rgba(17,22,25,.85); border: 1px solid var(--line); font-size: 12px; backdrop-filter: blur(12px); }
+    @media (max-width: 720px) {
+      .case-cover { padding: 32px 24px; min-height: 72vh; }
+      .case-section { padding: 70px 0; }
+      .case-two { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: white; color: #172128; }
+      .case-back { display: none; }
+      .case-shell { width: 100%; padding: 0; }
+      .case-cover { min-height: 180mm; break-after: page; background: #1d292f; color: white; }
+      .case-section { break-before: page; padding: 18mm 12mm; }
+      .case-section p, .case-list { color: #58666d; }
+    }
+  </style>
+</head>
+<body>
+  <div class="case-back"><a href="index.html">← 返回</a> · <a href="assets/manju-case.pdf">下载 PDF</a></div>
+  <main class="case-shell">
+    <section class="case-cover">
+      <p class="eyebrow">AI PRODUCT CASE STUDY · 白云青 · 2026</p>
+      <h1>漫剧工坊</h1>
+      <p>面向个人创作者的本地 AI 漫剧生产工作台。把剧本、分镜、角色一致性、配音、段视频和剪辑导出，整理成一条可操作、可追溯、可返工的生产线。</p>
+      <small>产品设计 / 交互设计 / AI 工作流 / 开发实现</small>
+    </section>
+
+    <section class="case-section">
+      <p class="eyebrow">01 · PROBLEM</p>
+      <h2>生成不是终点，生产流程才是</h2>
+      <p>个人漫剧创作者需要在多个工具之间手工传递剧本、分镜、素材与音频。真正影响效率的不是单个模型质量，而是工具断裂、角色漂移、生成顺序错误和任务状态丢失。</p>
+      <div class="case-quote">我要做的不是一个“模型合集”，而是一个始终知道当前缺什么、下一步做什么的单一工作台。</div>
+    </section>
+
+    <section class="case-section">
+      <p class="eyebrow">02 · PRODUCT FLOW</p>
+      <h2>七个阶段，一条顺序明确的生产线</h2>
+      <p>剧本 → 15 秒拆段 → 时间码分镜 → 资产引用生图 → 配音 → 段视频 → 成片剪辑。首页以总控台呈现进度、缺项和下一步。</p>
+      <img src="assets/screens/overview.png" alt="漫剧工坊总控台">
+    </section>
+
+    <section class="case-section case-two">
+      <div>
+        <p class="eyebrow">03 · SEGMENT-FIRST</p>
+        <h2>先拆 15 秒段，再拆镜头</h2>
+        <p>75 秒被规划为 5 个可生成、可审核的生产单元。每段内部再拆成 5–7 个带精确时间码的镜头。</p>
+        <ul class="case-list">
+          <li>控制模型调用成本</li>
+          <li>保持前后镜头动作连续</li>
+          <li>只重做出问题的一段</li>
+        </ul>
+      </div>
+      <img src="assets/screens/script.png" alt="剧本与分镜界面">
+    </section>
+
+    <section class="case-section case-two">
+      <div>
+        <p class="eyebrow">04 · CONSISTENCY</p>
+        <h2>角色一致性是一条资产引用链</h2>
+        <p>角色、服装、道具和场景在素材库中形成可引用资产，每个镜头记录引用版本。提示词负责执行，素材血缘负责可解释和可返工。</p>
+        <ul class="case-list">
+          <li>角色与服装参考逐镜绑定</li>
+          <li>Hard Lock 固定脸型、发型、服装和指定道具</li>
+          <li>未登记武器时禁止模型自行添加</li>
+        </ul>
+      </div>
+      <img src="assets/screens/characters.png" alt="角色与道具素材库">
+    </section>
+
+    <section class="case-section">
+      <p class="eyebrow">05 · CORRECT ORDER</p>
+      <h2>先生图、再配音、再生视频</h2>
+      <p>视频长度、口型与情绪都受声音影响。先锁定图片和配音，再以采用图、音频和动作提示生成每段视频，最后进入独立剪辑轨。</p>
+      <div class="case-two">
+        <img src="assets/screens/images.png" alt="逐镜生图">
+        <img src="assets/screens/voice.png" alt="角色配音">
+      </div>
+    </section>
+
+    <section class="case-section">
+      <p class="eyebrow">06 · EVIDENCE</p>
+      <h2>已经完成可验证的真实样例</h2>
+      <p>样例作品共 12 镜，全部完成采用图和配音，最终导出约 138.48 秒 MP4；本地参考音色共 196 条，支持搜索、试听与角色绑定。</p>
+      <video controls preload="metadata" poster="assets/works/shot-01.jpg" style="width:100%;border:1px solid var(--line);background:#000">
+        <source src="assets/works/sample-film.mp4" type="video/mp4">
+      </video>
+    </section>
+
+    <section class="case-section">
+      <p class="eyebrow">07 · SCOPE</p>
+      <h2>边界清楚，取舍可解释</h2>
+      <div class="case-two">
+        <div>
+          <h3>当前范围</h3>
+          <ul class="case-list">
+            <li>单人、本地运行，不依赖登录和云数据库</li>
+            <li>图片与段视频可外部导入</li>
+            <li>参考音色与可合成音色明确区分</li>
+            <li>剪辑辅助保留人工确认</li>
+          </ul>
+        </div>
+        <div>
+          <h3>暂不做的内容</h3>
+          <ul class="case-list">
+            <li>多人协作、手机端和商业部署</li>
+            <li>未经授权的声音克隆</li>
+            <li>把参考音频循环播放伪装成配音</li>
+            <li>宣称尚未接入的 RAG 或全自动剪辑</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="case-section">
+      <p class="eyebrow">08 · REFLECTION</p>
+      <h2>把不确定性收进产品流程</h2>
+      <div class="case-quote">这个项目让我练习的不是“调用多少模型”，而是如何把生成式 AI 的不确定性，收进一条可操作、可验证、可解释的产品流程。</div>
+      <p>下一步将用真实创作者测试拆段与返工的认知负担，衡量完成时间、返工率和放弃点，再决定声音克隆、视频模型和自动剪辑的优先级。</p>
+    </section>
+  </main>
+</body>
+</html>

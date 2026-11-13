@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="漫剧工坊：面向个人创作者的本地 AI 漫剧生产工作台。从剧本、15 秒分段分镜、角色一致性、配音到段视频与成片剪辑。">
+  <meta name="theme-color" content="#12171a">
+  <meta property="og:title" content="漫剧工坊 · AI 漫剧生产工作台">
+  <meta property="og:description" content="把分散的 AI 漫剧生产整理成一条可操作、可追溯、可返工的流程。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://byqnb666.github.io/manju-studio/">
+  <meta property="og:image" content="https://byqnb666.github.io/manju-studio/assets/works/shot-01.jpg">
+  <title>漫剧工坊 · AI 漫剧生产工作台</title>
+  <link rel="icon" href="assets/icon-256.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回顶部">
+      <img src="assets/icon-256.png" alt="">
+      <span>漫剧工坊</span>
+    </a>
+    <nav class="nav" aria-label="页面导航">
+      <a href="#problem">问题</a>
+      <a href="#workflow">工作流</a>
+      <a href="#decisions">关键决策</a>
+      <a href="#demo">实际演示</a>
+      <a href="case.html">完整案例</a>
+    </nav>
+    <a class="header-cta" href="#demo">看演示</a>
+  </header>
+
+  <main id="top">
+    <section class="hero section">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">AI PRODUCT CASE STUDY · 2026</p>
+        <h1>把分散的 AI 漫剧生产<br>整理成一条<span>可追溯的流程</span></h1>
+        <p class="hero-lead">面向个人创作者的本地工作台：从剧本拆解、15 秒段落分镜、角色与道具一致性，到配音、段视频与剪辑导出，在一个软件内按正确顺序完成。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#demo">观看实际成片</a>
+          <a class="button secondary" href="case.html">阅读产品案例</a>
+        </div>
+        <div class="hero-note">
+          <span>产品设计</span><i></i><span>交互设计</span><i></i><span>AI 工作流</span><i></i><span>开发实现</span>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="browser-frame">
+          <div class="browser-bar"><span></span><span></span><span></span><em>漫剧工坊 / 总控台</em></div>
+          <img class="overview-shot" src="assets/screens/overview.png" alt="漫剧工坊总控台界面">
+        </div>
+        <figure class="floating-shot">
+          <img src="assets/works/shot-01.jpg" alt="漫剧工坊生成的镜头画面">
+          <figcaption>样例镜头 · 已生图 12 / 12</figcaption>
+        </figure>
+        <div class="visual-stamp">
+          <strong>7</strong>
+          <span>阶段单线生产</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics section">
+      <article class="metric reveal">
+        <strong>12 / 12</strong>
+        <span>样例镜头完成采用图和配音</span>
+      </article>
+      <article class="metric reveal">
+        <strong>5 × 15s</strong>
+        <span>按目标时长组织生产单元</span>
+      </article>
+      <article class="metric reveal">
+        <strong>196</strong>
+        <span>本地参考音色，可搜索、试听、绑定</span>
+      </article>
+      <article class="metric reveal">
+        <strong>138.48s</strong>
+        <span>样例成片已在本机导出 MP4</span>
+      </article>
+    </section>
+
+    <section class="section problem" id="problem">
+      <div class="section-head reveal">
+        <p class="eyebrow">01 · THE PROBLEM</p>
+        <h2>问题不是“不能生成”，<br>而是整条生产流程无法被管理</h2>
+        <p>个人创作者真正耗费时间的地方，是工具切换、素材对不上、顺序反复和状态丢失。</p>
+      </div>
+      <div class="pain-grid">
+        <article class="reveal">
+          <span class="index">01</span>
+          <h3>工具断裂</h3>
+          <p>剧本、分镜、图片、配音、视频和剪辑分散在多个软件，靠手工命名传递。</p>
+        </article>
+        <article class="reveal">
+          <span class="index">02</span>
+          <h3>角色漂移</h3>
+          <p>人物在不同镜头中服装、脸和道具不一致，镜头越多，返工成本越高。</p>
+        </article>
+        <article class="reveal">
+          <span class="index">03</span>
+          <h3>生成顺序反了</h3>
+          <p>先生成视频再配音会导致时长和节奏不匹配；先生图、再配音、再生视频更可控。</p>
+        </article>
+        <article class="reveal">
+          <span class="index">04</span>
+          <h3>进度无法恢复</h3>
+          <p>刷新或重启后任务中断，创作者不知道哪些镜头已有图片、配音和参考素材。</p>
+        </article>
+      </div>
+      <blockquote class="insight reveal">
+        <span>PRODUCT INSIGHT</span>
+        用户需要的不是更多模型入口，而是一个始终知道“现在缺什么、下一步做什么”的生产工作台。
+      </blockquote>
+    </section>
+
+    <section class="section workflow" id="workflow">
+      <div class="section-head reveal">
+        <p class="eyebrow">02 · THE PRODUCT</p>
+        <h2>一条顺序明确的生产线</h2>
+        <p>首页不展示模型列表，而是展示七个生产阶段、当前进度和下一步操作。</p>
+      </div>
+      <div class="flow" aria-label="产品流程">
+        <article class="reveal"><b>01</b><h3>剧本</h3><p>整集内容输入</p></article>
+        <article class="reveal"><b>02</b><h3>拆段</h3><p>目标时长 → 15 秒单元</p></article>
+        <article class="reveal"><b>03</b><h3>分镜</h3><p>时间码、动作、状态</p></article>
+        <article class="reveal"><b>04</b><h3>出图</h3><p>角色、服装、道具引用</p></article>
+        <article class="reveal"><b>05</b><h3>配音</h3><p>先锁定声音和节奏</p></article>
+        <article class="reveal"><b>06</b><h3>视频</h3><p>采用图 + 动作提示</p></article>
+        <article class="reveal"><b>07</b><h3>成片</h3><p>剪辑、字幕、导出</p></article>
+      </div>
+      <div class="workflow-note reveal">
+        <div><strong>单线总控</strong><span>当前作品、阶段状态、缺项与下一步集中在同一页。</span></div>
+        <div><strong>从正确依赖开始</strong><span>先生图后配音，再生成段视频，剪辑只处理确认后的结果。</span></div>
+        <div><strong>外部素材可进入</strong><span>豆包、即梦的图片和视频可导入统一采用与剪辑流程。</span></div>
+      </div>
+    </section>
+
+    <section class="section decisions" id="decisions">
+      <div class="section-head reveal">
+        <p class="eyebrow">03 · KEY DECISIONS</p>
+        <h2>产品价值藏在取舍里</h2>
+      </div>
+
+      <article class="case-row reveal">
+        <div class="case-copy">
+          <span class="case-no">DECISION 01</span>
+          <h3>先拆 15 秒段，再拆镜头</h3>
+          <p>75 秒不是 75 个独立视频，而是 5 个可生成、可审核、可返工的生产单元。每段内部再按精确时间码拆镜头。</p>
+          <ul>
+            <li>控制模型调用成本和返工范围</li>
+            <li>用前镜 End State 接后镜 Start State</li>
+            <li>只重做出现问题的那一段</li>
+          </ul>
+        </div>
+        <figure class="case-media">
+          <img src="assets/screens/script.png" alt="剧本、分段与分镜界面" loading="lazy">
+          <figcaption>剧本内直接完成分段规划，并显示每段时长、镜头数与素材齐套状态。</figcaption>
+        </figure>
+      </article>
+
+      <article class="case-row reverse reveal">
+        <div class="case-copy">
+          <span class="case-no">DECISION 02</span>
+          <h3>角色一致性是一条资产引用链</h3>
+          <p>角色、服装、道具和场景先入库，再由每个镜头显式引用；生成结果可以追溯到具体资产版本，而不只依赖一句提示词。</p>
+          <ul>
+            <li>Hard Lock 固定脸型、服装与指定道具</li>
+            <li>逐镜记录参考图和素材血缘</li>
+            <li>未登记武器时禁止模型自行添加佩剑</li>
+          </ul>
+        </div>
+        <figure class="case-media">
+          <img src="assets/screens/characters.png" alt="角色、服装、道具与场景素材库" loading="lazy">
+          <figcaption>角色服装参考、道具绑定和逐镜引用共同构成一致性控制。</figcaption>
+        </figure>
+      </article>
+
+      <article class="case-row reveal">
+        <div class="case-copy">
+          <span class="case-no">DECISION 03</span>
+          <h3>模型可以换，生产秩序不能丢</h3>
+          <p>工作台不强制绑定单一模型。没有视频模型权限时，仍然可以导入外部段视频；产品把不同模型产物纳入同一套采用、质检和剪辑流程。</p>
+          <ul>
+            <li>图片支持单张、ZIP 和外部生成结果导入</li>
+            <li>段视频支持 MP4、WebM、MOV、M4V</li>
+            <li>模型权限和费用边界被明确展示</li>
+          </ul>
+        </div>
+        <figure class="case-media">
+          <img src="assets/screens/video.png" alt="段视频生成与外部视频导入界面" loading="lazy">
+          <figcaption>模型未开通时，用户可以把即梦等平台生成的段视频导入，流程不中断。</figcaption>
+        </figure>
+      </article>
+    </section>
+
+    <section class="section consistency">
+      <div class="section-head reveal">
+        <p class="eyebrow">04 · CONSISTENCY SYSTEM</p>
+        <h2>每张结果图，都能解释它从哪里来</h2>
+        <p>素材库不是文件夹，而是生产过程中的引用源。角色、服装、道具与镜头之间形成可检查的关系。</p>
+      </div>
+      <div class="character-grid">
+        <figure class="character-card reveal">
+          <img src="assets/works/character-lin.png" alt="林姐角色三视图" loading="lazy">
+          <figcaption><b>林姐</b><span>服装版本 · 角色参考</span></figcaption>
+        </figure>
+        <figure class="character-card reveal">
+          <img src="assets/works/character-yu.png" alt="小宇角色三视图" loading="lazy">
+          <figcaption><b>小宇</b><span>年龄设定 · 角色参考</span></figcaption>
+        </figure>
+        <div class="lineage reveal">
+          <div><span>01</span><b>角色资产</b><small>角色 ID / 三视图 / 服装版本</small></div>
+          <div><span>02</span><b>逐镜引用</b><small>指定角色、服装与道具</small></div>
+          <div><span>03</span><b>提示词编译</b><small>Start / Action / End + Hard Lock</small></div>
+          <div><span>04</span><b>镜头结果</b><small>采用版本与生成来源可回溯</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section generation">
+      <div class="section-head reveal">
+        <p class="eyebrow">05 · GENERATION PIPELINE</p>
+        <h2>先锁定视觉和声音，再生成视频</h2>
+      </div>
+      <div class="generation-grid">
+        <figure class="reveal">
+          <img src="assets/screens/images.png" alt="逐镜生图界面" loading="lazy">
+          <figcaption><span>01 / 画面</span>参考图、角色、道具和动作状态共同编译为生图提示词。</figcaption>
+        </figure>
+        <figure class="reveal">
+          <img src="assets/screens/voice.png" alt="角色配音与音色选择界面" loading="lazy">
+          <figcaption><span>02 / 声音</span>角色绑定参考音色，用真实音频时长反馈到镜头节奏。</figcaption>
+        </figure>
+      </div>
+      <div class="order-strip reveal">
+        <span>剧本</span><i></i><span>分镜</span><i></i><span>采用图</span><i></i><span>配音</span><i></i><span>段视频</span><i></i><span>剪辑</span>
+      </div>
+      <p class="order-note reveal">配音不是成片前的补项，而是视频生成的上游依赖。声音先确定，视频长度、口型和情绪才有可靠参考。</p>
+    </section>
+
+    <section class="section demo" id="demo">
+      <div class="section-head reveal">
+        <p class="eyebrow">06 · ACTUAL OUTPUT</p>
+        <h2>不是概念稿，已经导出成片</h2>
+        <p>样例共 12 镜，全部有采用图和配音，最终通过独立剪辑轨导出约 138 秒 MP4。</p>
+      </div>
+      <div class="film-layout">
+        <div class="video-wrap reveal">
+          <video controls preload="metadata" poster="assets/works/shot-01.jpg">
+            <source src="assets/works/sample-film.mp4" type="video/mp4">
+            你的浏览器不支持 HTML5 视频。
+          </video>
+          <div class="video-caption">
+            <span>样例成片</span>
+            <b>《二百块钱的妈妈》第 1 集</b>
+          </div>
+        </div>
+        <aside class="film-meta reveal">
+          <div><span>镜头</span><strong>12</strong></div>
+          <div><span>采用图</span><strong>12 / 12</strong></div>
+          <div><span>配音</span><strong>12 / 12</strong></div>
+          <div><span>剪辑片段</span><strong>12</strong></div>
+          <div><span>成片时长</span><strong>138.48s</strong></div>
+        </aside>
+      </div>
+      <div class="shot-grid">
+        <button data-lightbox="assets/works/shot-01.jpg" class="reveal"><img src="assets/works/shot-01.jpg" alt="样例分镜 1" loading="lazy"></button>
+        <button data-lightbox="assets/works/shot-02.jpg" class="reveal"><img src="assets/works/shot-02.jpg" alt="样例分镜 2" loading="lazy"></button>
+        <button data-lightbox="assets/works/shot-03.jpg" class="reveal"><img src="assets/works/shot-03.jpg" alt="样例分镜 3" loading="lazy"></button>
+        <button data-lightbox="assets/works/shot-04.jpg" class="reveal"><img src="assets/works/shot-04.jpg" alt="样例分镜 4" loading="lazy"></button>
+        <button data-lightbox="assets/works/shot-05.jpg" class="reveal"><img src="assets/works/shot-05.jpg" alt="样例分镜 5" loading="lazy"></button>
+        <button data-lightbox="assets/works/shot-06.jpg" class="reveal"><img src="assets/works/shot-06.jpg" alt="样例分镜 6" loading="lazy"></button>
+      </div>
+      <p class="usage-note">视频与图片仅用于项目作品评审，请勿转载或用于二次创作。</p>
+    </section>
+
+    <section class="section operating">
+      <div class="section-head reveal">
+        <p class="eyebrow">07 · OPERATING SYSTEM</p>
+        <h2>能持续使用的本地工作台</h2>
+      </div>
+      <div class="operating-grid">
+        <div class="reveal">
+          <span>本地持久化</span>
+          <h3>刷新、关闭和重启后继续</h3>
+          <p>作品、集、镜头、素材关系、任务状态和剪辑轨写入本机 SQLite，不依赖登录和云数据库。</p>
+        </div>
+        <div class="reveal">
+          <span>可恢复任务</span>
+          <h3>失败不拖垮整集进度</h3>
+          <p>长任务记录状态，已经完成的图片、配音和段视频仍然保留，用户可以回到失败点继续。</p>
+        </div>
+        <div class="reveal">
+          <span>质量检查</span>
+          <h3>交付前自动指出缺项</h3>
+          <p>检查缺图、缺配音、素材引用、动作链、视觉锚点、剪辑源与素材血缘。</p>
+        </div>
+      </div>
+      <div class="terminal reveal">
+        <div class="terminal-head"><span></span><span></span><span></span><em>workflow.status</em></div>
+        <div class="terminal-body">
+          <p><i>✓</i> 12 镜采用图已齐套</p>
+          <p><i>✓</i> 12 镜配音已齐套</p>
+          <p><i>✓</i> 剪辑轨和素材引用可追溯</p>
+          <p><i>✓</i> 本机工作状态已持久化</p>
+          <p class="warn"><i>!</i> 声音克隆与付费视频权限按账户能力启用</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section review">
+      <div class="section-head reveal">
+        <p class="eyebrow">08 · SCOPE & REFLECTION</p>
+        <h2>明确不做什么，<br>比把所有 AI 能力都塞进来更重要</h2>
+      </div>
+      <div class="review-grid">
+        <div class="reveal">
+          <span class="pill">CURRENT SCOPE</span>
+          <h3>当前边界</h3>
+          <ul>
+            <li>单人、本地运行，无登录和云数据库</li>
+            <li>外部图片和段视频可导入，不被单一模型锁死</li>
+            <li>参考音色与可合成音色明确区分</li>
+            <li>剪辑辅助保留人工确认，不伪装成全自动</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <span class="pill">NEXT</span>
+          <h3>下一步验证</h3>
+          <ul>
+            <li>用真实创作者测试拆段和返工的认知负担</li>
+            <li>在可控成本下验证更多视频模型与配额</li>
+            <li>接入真正可合成的声音克隆能力</li>
+            <li>衡量完成时间、返工率和放弃点</li>
+          </ul>
+        </div>
+      </div>
+      <blockquote class="closing reveal">
+        这个项目让我练习的不是“调用多少模型”，而是如何把生成式 AI 的不确定性，收进一条可操作、可验证、可解释的产品流程。
+      </blockquote>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand">
+      <img src="assets/icon-256.png" alt="">
+      <div><b>漫剧工坊</b><span>AI 产品实习作品 · 2026</span></div>
+    </div>
+    <p>白云青 · 产品设计 / 交互设计 / AI 工作流 / 开发实现</p>
+    <div class="footer-links">
+      <a href="case.html">完整产品案例</a>
+      <a href="assets/manju-case.pdf">下载案例 PDF</a>
+      <a href="assets/works/sample-film.mp4">下载示例 MP4</a>
+      <a href="https://github.com/byqnb666" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button aria-label="关闭图片">×</button>
+    <img alt="放大的分镜画面">
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
