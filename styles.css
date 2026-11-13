@@ -17,6 +17,7 @@
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 78% -10%, rgba(210,154,93,.12), transparent 28rem),
     var(--bg);
@@ -238,10 +239,11 @@ h1 span { color: var(--accent); }
   .header-cta { margin-left: auto; }
   .section, .site-footer { width: min(100% - 32px, var(--max)); }
   .hero { padding: 64px 0; }
-  h1 { font-size: 42px; }
+  .hero-copy, .hero-visual { min-width: 0; }
+  h1 { font-size: 34px; overflow-wrap: anywhere; }
   .hero-lead { font-size: 14px; }
-  .hero-visual { min-height: 360px; }
-  .browser-frame { inset: 25px 10px 50px 0; }
+  .hero-visual { min-height: 360px; overflow: hidden; }
+  .browser-frame { inset: 25px 8px 50px 0; }
   .overview-shot { height: 280px; }
   .floating-shot { width: 112px; right: -4px; bottom: -6px; }
   .visual-stamp { width: 72px; height: 72px; left: -7px; top: -8px; }
