@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="AIGC 动态影像作品：东方武侠与奇幻动作视觉实验。">
+  <meta name="theme-color" content="#0d1214">
+  <title>AIGC 动态影像 · 白云青作品</title>
+  <link rel="icon" href="../assets/icon-256.png">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    :root {
+      --aigc-red: #b56a55;
+      --aigc-cyan: #72a0a4;
+    }
+    body {
+      background:
+        radial-gradient(circle at 78% 8%, rgba(114,160,164,.12), transparent 27rem),
+        #0d1214;
+    }
+    .aigc-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 30;
+      height: 66px;
+      display: flex;
+      align-items: center;
+      padding: 0 max(24px, calc((100vw - 1280px) / 2));
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      background: rgba(13,18,20,.78);
+      backdrop-filter: blur(18px);
+    }
+    .aigc-header .brand { color: #f0eee8; }
+    .aigc-header nav { margin-left: auto; display: flex; gap: 24px; color: #8e9a9d; font-size: 12px; }
+    .aigc-header nav a:hover { color: #eee9df; }
+    .aigc-hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      padding: 150px max(24px, calc((100vw - 1280px) / 2)) 74px;
+    }
+    .aigc-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(4,7,8,.94) 0%, rgba(4,7,8,.70) 42%, rgba(4,7,8,.15) 76%),
+        linear-gradient(0deg, #0d1214 0%, transparent 38%),
+        url("../assets/aigc/snow-wuxia-poster.jpg") center 35% / cover no-repeat;
+      transform: scale(1.02);
+    }
+    .aigc-hero-copy { position: relative; z-index: 2; max-width: 730px; }
+    .aigc-hero h1 {
+      font-size: clamp(58px, 9vw, 118px);
+      line-height: .96;
+      margin: 20px 0 26px;
+      letter-spacing: -.07em;
+      font-weight: 620;
+    }
+    .aigc-hero h1 span { color: #d7b596; }
+    .aigc-hero p { max-width: 620px; color: #b4bec0; font-size: 16px; line-height: 1.9; }
+    .aigc-scroll { margin-top: 42px; display: inline-flex; align-items: center; gap: 12px; color: #cdd3d2; font-size: 11px; }
+    .aigc-scroll::after { content: ""; width: 52px; height: 1px; background: var(--aigc-red); }
+    .aigc-main { width: min(1280px, calc(100% - 48px)); margin: 0 auto; }
+    .aigc-intro {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      padding: 110px 0 90px;
+      border-bottom: 1px solid var(--line);
+    }
+    .aigc-intro h2 { font-size: clamp(36px,5vw,62px); line-height: 1.17; letter-spacing: -.055em; margin: 0; }
+    .aigc-intro p { color: #9ca8ab; max-width: 650px; font-size: 14px; line-height: 1.9; }
+    .aigc-meta { display: flex; gap: 34px; margin-top: 30px; flex-wrap: wrap; }
+    .aigc-meta span { color: #d3d7d5; font-size: 10px; letter-spacing: .1em; }
+    .works { padding: 108px 0 60px; }
+    .works-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 42px; }
+    .works-head h2 { font-size: clamp(36px,4vw,54px); margin: 0; letter-spacing: -.045em; }
+    .works-head p { max-width: 390px; color: #839196; font-size: 11px; text-align: right; }
+    .work {
+      display: grid;
+      grid-template-columns: minmax(0,1.5fr) minmax(280px,.5fr);
+      gap: 26px;
+      padding: 26px 0 88px;
+      border-top: 1px solid var(--line);
+    }
+    .work-video {
+      position: relative;
+      border: 1px solid rgba(255,255,255,.15);
+      background: #050708;
+      padding: 8px;
+    }
+    .work-video video { width: 100%; max-height: 720px; background: #000; }
+    .work-info { padding-top: 10px; }
+    .work-no { color: var(--aigc-red); font-size: 10px; letter-spacing: .16em; }
+    .work-info h3 { font-size: clamp(30px,3.2vw,46px); line-height: 1.2; letter-spacing: -.04em; margin: 18px 0; }
+    .work-info > p { color: #939fa2; font-size: 12px; line-height: 1.8; }
+    .work-facts { margin-top: 30px; border-top: 1px solid var(--line); }
+    .work-facts div { display: flex; justify-content: space-between; gap: 20px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .work-facts span { color: #758286; font-size: 10px; }
+    .work-facts b { color: #d5d9d7; font-size: 11px; font-weight: 500; }
+    .work:nth-of-type(2) .work-video { order: 2; }
+    .work:nth-of-type(2) .work-info { order: 1; }
+    .note {
+      margin-top: 20px;
+      padding: 28px 32px;
+      border: 1px solid var(--line);
+      color: #919da0;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+    .aigc-footer {
+      width: min(1280px, calc(100% - 48px));
+      margin: 90px auto 0;
+      padding: 34px 0 46px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      color: #788589;
+      font-size: 10px;
+    }
+    .aigc-footer a:hover { color: #e8e6df; }
+    @media (max-width: 850px) {
+      .aigc-header nav { display: none; }
+      .aigc-hero { min-height: 82vh; padding-top: 120px; }
+      .aigc-intro, .work { grid-template-columns: 1fr; gap: 28px; }
+      .aigc-intro { padding-top: 84px; }
+      .work:nth-of-type(2) .work-video, .work:nth-of-type(2) .work-info { order: initial; }
+      .works-head { display: block; }
+      .works-head p { text-align: left; margin-top: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="aigc-header">
+    <a class="brand" href="../index.html">
+      <img src="../assets/icon-256.png" alt="">
+      <span>白云青 · AIGC</span>
+    </a>
+    <nav>
+      <a href="../index.html">漫剧工坊</a>
+      <a href="../case.html">产品案例</a>
+      <a href="#works">动态影像</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="aigc-hero">
+      <div class="aigc-hero-copy">
+        <p class="eyebrow">AIGC MOTION STUDIES · 2026</p>
+        <h1>视觉情绪<br><span>与动态叙事</span></h1>
+        <p>东方武侠与奇幻动作方向的 AI 动态影像作品。关注画面氛围、镜头节奏、角色表现与视觉连续性。</p>
+        <a class="aigc-scroll" href="#works">查看动态作品</a>
+      </div>
+    </section>
+
+    <div class="aigc-main">
+      <section class="aigc-intro">
+        <h2>不只是生成一张图，<br>还要建立叙事氛围。</h2>
+        <div>
+          <p>这组作品以东方幻想为共同视觉方向，分别探索冷峻雪原中的孤身武侠，以及云海之上的奇幻对决。两段作品使用 AI 辅助生成视觉内容，并通过镜头、角色与场景控制形成连续的动态表达。</p>
+          <div class="aigc-meta">
+            <span>AI 视觉生成</span>
+            <span>动态影像</span>
+            <span>东方幻想</span>
+            <span>动作叙事</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="works" id="works">
+        <div class="works-head">
+          <h2>Selected Motion Works</h2>
+          <p>两件作品，两种氛围。视频为适合网页播放的压缩版本，原片保留在本地。</p>
+        </div>
+
+        <article class="work">
+          <div class="work-video">
+            <video controls preload="metadata" poster="../assets/aigc/snow-wuxia-poster.jpg">
+              <source src="../assets/aigc/snow-wuxia.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="work-info">
+            <span class="work-no">WORK 01 · 01:42</span>
+            <h3>雪原孤影</h3>
+            <p>冷灰色雪原、破碎地貌与孤独的持刀人物。通过低饱和环境、强烈人物轮廓和克制动作，建立冷峻、压抑的武侠氛围。</p>
+            <div class="work-facts">
+              <div><span>方向</span><b>东方武侠</b></div>
+              <div><span>视觉情绪</span><b>冷峻 / 孤寂</b></div>
+              <div><span>画幅</span><b>16:9 · 1080p 原片</b></div>
+              <div><span>网页版本</span><b>720p · 有声</b></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="work">
+          <div class="work-video">
+            <video controls preload="metadata" poster="../assets/aigc/cloud-duel-poster.jpg">
+              <source src="../assets/aigc/cloud-duel.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="work-info">
+            <span class="work-no">WORK 02 · 00:36</span>
+            <h3>云海对决</h3>
+            <p>以云海、山巅、兵器与高速动作构成奇幻对决场景。重点展示强色彩、金属材质和动作张力之间的视觉对比。</p>
+            <div class="work-facts">
+              <div><span>方向</span><b>东方奇幻</b></div>
+              <div><span>视觉情绪</span><b>明亮 / 紧张</b></div>
+              <div><span>画幅</span><b>16:9 · 1080p 原片</b></div>
+              <div><span>网页版本</span><b>720p · 有声</b></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="note">展示说明：作品使用 AI 辅助生成视觉内容。当前页面重点呈现个人审美方向与动态表达探索，不将外部工具能力表述为完全手工制作。</div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="aigc-footer">
+    <span>白云青 · AIGC 动态影像作品 · 2026</span>
+    <div><a href="../index.html">返回漫剧工坊</a>　·　<a href="../case.html">完整产品案例</a></div>
+  </footer>
+</body>
+</html>
