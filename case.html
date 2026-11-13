@@ -23,6 +23,8 @@
     .case-list li { margin: 12px 0; }
     .case-list li::marker { color: var(--accent); }
     .case-quote { margin: 40px 0; padding: 34px; background: var(--paper); color: #253034; font-size: 24px; line-height: 1.55; }
+    .case-gallery { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .case-gallery img { width: 100%; aspect-ratio: 9/16; object-fit: cover; }
     .case-back { position: fixed; right: 24px; top: 22px; z-index: 5; padding: 8px 14px; background: rgba(17,22,25,.85); border: 1px solid var(--line); font-size: 12px; backdrop-filter: blur(12px); }
     @media (max-width: 720px) {
       .case-cover { padding: 32px 24px; min-height: 72vh; }
@@ -103,11 +105,13 @@
 
     <section class="case-section">
       <p class="eyebrow">06 · EVIDENCE</p>
-      <h2>已经完成可验证的真实样例</h2>
-      <p>样例作品共 12 镜，全部完成采用图和配音，最终导出约 138.48 秒 MP4；本地参考音色共 196 条，支持搜索、试听与角色绑定。</p>
-      <video controls preload="metadata" poster="assets/works/shot-01.jpg" style="width:100%;border:1px solid var(--line);background:#000">
-        <source src="assets/works/sample-film.mp4" type="video/mp4">
-      </video>
+      <h2>镜头图和声音已经形成可继续生产的素材</h2>
+      <p>样例作品共 12 镜，全部完成采用图和配音；本地参考音色共 196 条，支持搜索、试听与角色绑定。这里展示图片与生产状态，不把现阶段拼接成片当作视频生成能力。</p>
+      <div class="case-gallery">
+        <img src="assets/works/shot-01.jpg" alt="样例镜头 1">
+        <img src="assets/works/shot-03.jpg" alt="样例镜头 3">
+        <img src="assets/works/shot-05.jpg" alt="样例镜头 5">
+      </div>
     </section>
 
     <section class="case-section">

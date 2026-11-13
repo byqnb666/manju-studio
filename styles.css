@@ -155,15 +155,15 @@ h1 span { color: var(--accent); }
 .order-strip i::after { content: ""; position: absolute; right: 0; top: -2px; width: 5px; height: 5px; border-top: 1px solid #8f867a; border-right: 1px solid #8f867a; transform: rotate(45deg); }
 .order-note { color: var(--muted); font-size: 11px; text-align: center; }
 
-.film-layout { display: grid; grid-template-columns: minmax(0,1fr) 260px; gap: 24px; align-items: start; }
-.video-wrap { background: #090d0f; border: 1px solid var(--line); padding: 10px; }
-.video-wrap video { width: 100%; max-height: 700px; background: #000; }
-.video-caption { display: flex; justify-content: space-between; gap: 16px; padding: 14px 4px 4px; font-size: 11px; color: var(--muted); }
-.video-caption b { color: var(--paper); font-weight: 500; }
-.film-meta { border-top: 1px solid var(--line); }
-.film-meta div { display: flex; align-items: baseline; justify-content: space-between; padding: 20px 0; border-bottom: 1px solid var(--line); }
-.film-meta span { color: var(--muted); font-size: 11px; }
-.film-meta strong { color: var(--paper); font-size: 21px; font-weight: 500; letter-spacing: -.03em; }
+.result-layout { display: grid; grid-template-columns: minmax(0,1.35fr) minmax(260px,.65fr); gap: 24px; align-items: stretch; }
+.result-main { margin: 0; background: #090d0f; border: 1px solid var(--line); padding: 10px; }
+.result-main img { width: 100%; max-height: 680px; object-fit: cover; object-position: center 26%; }
+.result-main figcaption { padding: 13px 4px 4px; color: var(--muted); font-size: 11px; }
+.result-meta { border-top: 1px solid var(--line); }
+.result-meta > div:not(.result-quote) { display: flex; align-items: baseline; justify-content: space-between; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.result-meta span { color: var(--muted); font-size: 11px; }
+.result-meta strong { color: var(--paper); font-size: 21px; font-weight: 500; letter-spacing: -.03em; }
+.result-quote { margin-bottom: 12px; padding: 24px; background: var(--paper); color: #263034; font-size: 15px; line-height: 1.7; }
 .shot-grid { display: grid; grid-template-columns: repeat(6,1fr); gap: 10px; margin-top: 26px; }
 .shot-grid button { padding: 0; border: 1px solid var(--line); background: none; cursor: zoom-in; overflow: hidden; }
 .shot-grid img { width: 100%; aspect-ratio: 9/16; object-fit: cover; transition: transform .35s ease, filter .35s ease; }
@@ -226,11 +226,12 @@ h1 span { color: var(--accent); }
   .case-row.reverse .case-copy { order: 0; }
   .character-grid { grid-template-columns: 1fr 1fr; }
   .lineage { grid-column: 1 / -1; }
-  .film-layout { grid-template-columns: 1fr; }
-  .film-meta { display: grid; grid-template-columns: repeat(5,1fr); }
-  .film-meta div { display: block; border-right: 1px solid var(--line); padding: 18px 12px; text-align: center; }
-  .film-meta div:last-child { border-right: 0; }
-  .film-meta span, .film-meta strong { display: block; }
+  .result-layout { grid-template-columns: 1fr; }
+  .result-meta { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--line); }
+  .result-meta .result-quote { grid-column: 1 / -1; margin: 0; }
+  .result-meta > div:not(.result-quote) { display: block; border-right: 1px solid var(--line); border-bottom: 0; padding: 18px 12px; text-align: center; }
+  .result-meta > div:last-child { border-right: 0; }
+  .result-meta span, .result-meta strong { display: block; }
   .shot-grid { grid-template-columns: repeat(3,1fr); }
 }
 
@@ -272,9 +273,9 @@ h1 span { color: var(--accent); }
   .lineage div { grid-template-columns: 28px 90px 1fr; padding: 15px; }
   .generation-grid figure:nth-child(2) { margin-top: 12px; }
   .order-strip { margin-top: 38px; }
-  .film-meta { grid-template-columns: 1fr 1fr; }
-  .film-meta div { border-bottom: 1px solid var(--line); }
-  .film-meta div:nth-child(2n) { border-right: 0; }
+  .result-meta { grid-template-columns: 1fr 1fr; }
+  .result-meta > div:not(.result-quote) { border-bottom: 1px solid var(--line); }
+  .result-meta > div:nth-child(odd) { border-right: 0; }
   .shot-grid { grid-template-columns: 1fr 1fr; }
   .operating-grid { grid-template-columns: 1fr; }
   .operating-grid > div { min-height: 0; }
