@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="漫剧工坊 AI 质量评估：固定测试集、五维评分、严重错误和分批次对比。">
+  <meta name="theme-color" content="#111619">
+  <title>AI 质量与评测 · 漫剧工坊</title>
+  <link rel="icon" href="assets/icon-256.png">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .eval-page-header {
+      position: fixed; inset: 0 0 auto; z-index: 30; height: 66px;
+      display: flex; align-items: center; gap: 24px;
+      padding: 0 max(24px, calc((100vw - 1180px) / 2));
+      background: rgba(17,22,25,.84); border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+    }
+    .eval-page-header nav { margin-left: auto; display: flex; gap: 24px; color: var(--muted); font-size: 12px; }
+    .eval-hero { min-height: 72vh; padding: 155px 0 80px; display: flex; align-items: flex-end; }
+    .eval-hero h1 { max-width: 1000px; font-size: clamp(50px,7vw,92px); margin: 20px 0 24px; }
+    .eval-hero h1 span { color: var(--accent); }
+    .eval-hero p { max-width: 720px; color: var(--muted); font-size: 16px; }
+    .eval-wrap { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+    .eval-snapshot { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+    .eval-snapshot > div { background: var(--surface); padding: 28px; }
+    .eval-snapshot span { display: block; color: var(--muted); font-size: 10px; letter-spacing: .11em; }
+    .eval-snapshot b { display: block; color: var(--paper); font-size: 34px; margin: 10px 0 5px; font-weight: 550; }
+    .eval-snapshot small { color: #718084; font-size: 10px; }
+    .eval-section { padding: 105px 0; border-bottom: 1px solid var(--line); }
+    .eval-section h2 { font-size: clamp(34px,4.5vw,56px); line-height: 1.18; letter-spacing: -.05em; margin: 0 0 20px; }
+    .eval-section-head { max-width: 760px; margin-bottom: 42px; }
+    .eval-section-head p { color: var(--muted); font-size: 14px; }
+    .eval-proof { border: 1px solid var(--line); padding: 10px; background: #090d0f; margin: 0; }
+    .eval-proof img { width: 100%; }
+    .eval-proof figcaption { padding: 12px 4px 3px; color: #7f8c90; font-size: 10px; }
+    .eval-grid-two { display: grid; grid-template-columns: .72fr 1.28fr; gap: 50px; align-items: start; }
+    .eval-grid-two p, .eval-grid-two li { color: var(--muted); font-size: 13px; }
+    .eval-grid-two ul { padding-left: 18px; }
+    .eval-grid-two li { margin: 9px 0; }
+    .eval-grid-two li::marker { color: var(--accent); }
+    .score-stack { border-top: 1px solid var(--line); }
+    .score-line { display: grid; grid-template-columns: 100px 1fr 52px; gap: 16px; align-items: center; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .score-line span { color: var(--muted); font-size: 11px; }
+    .score-line i { height: 4px; background: #292e33; position: relative; }
+    .score-line i::after { content: ""; position: absolute; inset: 0; width: var(--score); background: var(--accent); }
+    .score-line b { color: var(--paper); font-size: 12px; text-align: right; font-weight: 500; }
+    .finding-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .finding-grid article { background: var(--surface); border: 1px solid var(--line); padding: 28px; }
+    .finding-grid b { display: block; color: var(--paper); font-size: 16px; margin-bottom: 10px; }
+    .finding-grid p { color: var(--muted); font-size: 11px; line-height: 1.8; margin: 0; }
+    .caveat { margin-top: 25px; padding: 24px 28px; border-left: 3px solid var(--accent); background: var(--paper); color: #263034; font-size: 13px; line-height: 1.8; }
+    .next-loop { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--line); }
+    .next-loop div { padding: 28px; border-right: 1px solid var(--line); }
+    .next-loop div:last-child { border-right: 0; }
+    .next-loop span { color: var(--accent); font-size: 9px; letter-spacing: .14em; }
+    .next-loop b { display: block; margin: 14px 0 8px; font-size: 13px; }
+    .next-loop p { color: var(--muted); font-size: 10.5px; margin: 0; }
+    .eval-method-note { padding: 34px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: 12px; line-height: 1.9; }
+    .eval-footer { width: min(1180px, calc(100% - 48px)); margin: 100px auto 0; padding: 34px 0 44px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; }
+    @media (max-width: 850px) {
+      .eval-page-header nav { display: none; }
+      .eval-hero { min-height: 64vh; padding-top: 120px; }
+      .eval-snapshot { grid-template-columns: 1fr 1fr; }
+      .eval-grid-two { grid-template-columns: 1fr; gap: 26px; }
+      .finding-grid, .next-loop { grid-template-columns: 1fr; }
+      .next-loop div { border-right: 0; border-bottom: 1px solid var(--line); }
+      .next-loop div:last-child { border-bottom: 0; }
+      .eval-footer { display: block; line-height: 2; }
+    }
+  </style>
+</head>
+<body>
+  <header class="eval-page-header">
+    <a class="brand" href="index.html"><img src="assets/icon-256.png" alt=""><span>漫剧工坊 · AI 评测</span></a>
+    <nav>
+      <a href="index.html">项目主页</a>
+      <a href="case.html">产品案例</a>
+      <a href="aigc/">AIGC 影像</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="eval-hero">
+      <div class="eval-wrap">
+        <p class="eyebrow">AI QUALITY & EVALUATION · 2026</p>
+        <h1>把“生成得好不好”<br>变成<span>可验证的产品指标</span></h1>
+        <p>固定测试案例、统一 Prompt 版本、五维人工评分和严重错误分类，让 AI 画面质量可以被比较、归因和回归验证。</p>
+      </div>
+    </section>
+
+    <div class="eval-wrap">
+      <section class="eval-snapshot">
+        <div><span>首轮评分进度</span><b>12 / 20</b><small>12 个基准镜头已完成</small></div>
+        <div><span>平均分</span><b>80.8</b><small>五维总分 0–100</small></div>
+        <div><span>通过率</span><b>66.7%</b><small>8 条达到通过标准</small></div>
+        <div><span>严重错误率</span><b>8.3%</b><small>1 条人物关系错误</small></div>
+      </section>
+
+      <section class="eval-section">
+        <div class="eval-section-head">
+          <p class="eyebrow">01 · THE PROBLEM</p>
+          <h2>只展示一张成功图片，无法证明 AI 产品可靠</h2>
+          <p>生成式产品的难点不在于偶尔做出好结果，而在于能否识别失败、解释失败，并在修改 Prompt 或素材后确认没有让其他指标退化。</p>
+        </div>
+        <figure class="eval-proof">
+          <img src="assets/screens/evals.png" alt="漫剧工坊 AI 质检与评测中心">
+          <figcaption>评测中心：案例列表、当前采用图、五维评分、严重错误、成本和批次汇总。</figcaption>
+        </figure>
+      </section>
+
+      <section class="eval-section">
+        <div class="eval-grid-two">
+          <div>
+            <p class="eyebrow">02 · TEST SET</p>
+            <h2>同一套案例，比较每一次修改</h2>
+            <p>测试集与镜头和提示词绑定，输出图会复制到评测目录。之后重出图、替换参考素材，也不会改变历史批次。</p>
+            <ul>
+              <li>12 个镜头基准：还原真实生产镜头</li>
+              <li>8 个对抗挑战：人物、服装、道具、关系、动作、场景和画面洁净</li>
+              <li>每批记录渠道、模型、Prompt、耗时与成本</li>
+            </ul>
+          </div>
+          <div class="score-stack">
+            <div class="score-line"><span>角色身份</span><i style="--score:100%"></i><b>2.00</b></div>
+            <div class="score-line"><span>服装一致</span><i style="--score:100%"></i><b>2.00</b></div>
+            <div class="score-line"><span>道具正确</span><i style="--score:83.5%"></i><b>1.67</b></div>
+            <div class="score-line"><span>动作执行</span><i style="--score:58.5%"></i><b>1.17</b></div>
+            <div class="score-line"><span>画面可用</span><i style="--score:62.5%"></i><b>1.25</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="eval-section">
+        <div class="eval-section-head">
+          <p class="eyebrow">03 · WHAT THE DATA SAYS</p>
+          <h2>真正拖低通过率的，不是人物身份</h2>
+          <p>首轮 12 个基准镜头的身份和服装均分都达到 2.00，明显短板集中在动作执行和最终画面可用率。</p>
+        </div>
+        <div class="finding-grid">
+          <article><b>身份与服装已稳定</b><p>角色 ID、服装版本和参考图逐镜绑定，使身份、发型和服装保持成为这套测试中的最强项。</p></article>
+          <article><b>动作是首要短板</b><p>均分 1.17，说明模型能生成正确人物，但不一定准确完成 Start State 到 End State 的动作变化。</p></article>
+          <article><b>可用率仍然偏低</b><p>均分 1.25，代表构图、手部和明显瑕疵仍会造成返工；另有 1 条人物关系错误。</p></article>
+        </div>
+        <div class="caveat">数据边界：当前完成的是 12 个基准镜头；8 个对抗挑战尚未评分，因此这些结果只能用于首轮方向判断，不能称为完整模型基准。</div>
+      </section>
+
+      <section class="eval-section">
+        <div class="eval-section-head">
+          <p class="eyebrow">04 · NEXT EXPERIMENT</p>
+          <h2>下一批不凭感觉改，用同一测试集验证</h2>
+        </div>
+        <div class="next-loop">
+          <div><span>01</span><b>补完对抗案例</b><p>完成服装、道具、关系与画面洁净的 8 条挑战评分，建立完整基线。</p></div>
+          <div><span>02</span><b>修改 Prompt V2</b><p>针对动作链和肢体关系增加 Start / Action / End 约束。</p></div>
+          <div><span>03</span><b>同集回归</b><p>使用完全相同的 20 条案例，避免只挑表现更好的新样例。</p></div>
+          <div><span>04</span><b>比较效果与成本</b><p>同时观察平均分、通过率、严重错误率、生成耗时和单镜成本。</p></div>
+        </div>
+        <div class="eval-method-note">
+          评测目的不是证明 AI 已经完美，而是建立一条可重复的产品迭代机制：先发现失败类型，再提出假设，修改 Prompt、参考资产或模型，最后用同一组测试确认效果是否真的提升。
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="eval-footer">
+    <span>白云青 · AI 产品质量评估实践 · 2026</span>
+    <span><a href="index.html">返回漫剧工坊</a>　·　<a href="case.html">完整产品案例</a></span>
+  </footer>
+</body>
+</html>

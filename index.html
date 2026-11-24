@@ -25,6 +25,7 @@
       <a href="#workflow">工作流</a>
       <a href="#decisions">关键决策</a>
       <a href="#output">镜头与界面</a>
+      <a href="evaluation.html">AI 评测</a>
       <a href="aigc/">AIGC 影像</a>
       <a href="case.html">完整案例</a>
     </nav>
@@ -240,9 +241,41 @@
       <p class="order-note reveal">配音不是成片前的补项，而是视频生成的上游依赖。声音先确定，视频长度、口型和情绪才有可靠参考。</p>
     </section>
 
+    <section class="section evaluation">
+      <div class="section-head reveal">
+        <p class="eyebrow">06 · AI QUALITY EVALUATION</p>
+        <h2>不只展示成功，也用固定测试集找到失败</h2>
+        <p>20 个固定案例、五维评分、严重错误和批次对比，让 Prompt 或模型修改能够被回归验证。</p>
+      </div>
+      <div class="evaluation-layout">
+        <figure class="reveal eval-product-shot">
+          <img src="assets/screens/evals.png" alt="AI 质检与评测中心">
+          <figcaption>首轮评测界面与批次汇总</figcaption>
+        </figure>
+        <div class="evaluation-copy reveal">
+          <div class="evaluation-scoreline">
+            <span>首轮进度</span><strong>12 / 20</strong><small>12 个基准镜头已评分</small>
+          </div>
+          <div class="evaluation-scoreline">
+            <span>平均分</span><strong>80.8</strong><small>五维总分 0–100</small>
+          </div>
+          <div class="evaluation-scoreline">
+            <span>通过率</span><strong>66.7%</strong><small>8 条通过</small>
+          </div>
+          <div class="evaluation-scoreline">
+            <span>严重错误率</span><strong>8.3%</strong><small>1 条人物关系错误</small>
+          </div>
+          <a class="button secondary" href="evaluation.html">查看评测方法与首轮发现</a>
+        </div>
+      </div>
+      <div class="evaluation-insight reveal">
+        身份与服装均分达到 2.00；真正短板是动作执行 1.17 和画面可用 1.25。下一轮将针对动作链补强，并用相同 20 条案例做回归比较。
+      </div>
+    </section>
+
     <section class="section demo" id="output">
       <div class="section-head reveal">
-        <p class="eyebrow">06 · VISUAL EVIDENCE</p>
+        <p class="eyebrow">07 · VISUAL EVIDENCE</p>
         <h2>镜头图和配音已经形成可继续生产的素材</h2>
         <p>样例共 12 镜，全部完成采用图和角色配音。这里展示图片结果与生产状态，不把现阶段拼接成片当作视频生成能力展示。</p>
       </div>
@@ -272,7 +305,7 @@
 
     <section class="section operating">
       <div class="section-head reveal">
-        <p class="eyebrow">07 · OPERATING SYSTEM</p>
+        <p class="eyebrow">08 · OPERATING SYSTEM</p>
         <h2>能持续使用的本地工作台</h2>
       </div>
       <div class="operating-grid">
@@ -306,7 +339,7 @@
 
     <section class="section review">
       <div class="section-head reveal">
-        <p class="eyebrow">08 · SCOPE & REFLECTION</p>
+        <p class="eyebrow">09 · SCOPE & REFLECTION</p>
         <h2>明确不做什么，<br>比把所有 AI 能力都塞进来更重要</h2>
       </div>
       <div class="review-grid">
@@ -345,6 +378,7 @@
     <p>白云青 · 产品设计 / 交互设计 / AI 工作流 / 开发实现</p>
     <div class="footer-links">
       <a href="case.html">完整产品案例</a>
+      <a href="evaluation.html">AI 评测方法</a>
       <a href="aigc/">AIGC 动态影像</a>
       <a href="assets/manju-case.pdf">下载案例 PDF</a>
       <a href="https://github.com/byqnb666" target="_blank" rel="noreferrer">GitHub</a>
